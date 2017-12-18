@@ -1,11 +1,5 @@
-var builder = require('botbuilder');
-var food = require("./ModifyDetails");
-var details = require("./ModifyDetails");
-var currency = require('./Currency');
 var weather = require('./Weather');
 
-var qna = require('./QnAMaker');
-var correctlogin = require("./ModifyDetails");
 
 // Some sections have been omitted
 var isAttachment = false;
@@ -16,8 +10,7 @@ exports.startDialog = function (bot) {
     var recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/f5c7f697-cd55-415b-97bf-cd59690104ed?subscription-key=d815d5827cc84b4b8e9935674293bd02&verbose=true&timezoneOffset=0&q=');
     
     bot.recognizer(recognizer);
-  
-  
+   
 bot.dialog('Start', [//Starts the conversation
     function (session, args, next) {
         session.dialogData.args = args || {};        
@@ -40,9 +33,7 @@ bot.dialog('Start', [//Starts the conversation
         next();
         
         
-    },
-  
-    
+    },   
 
 ]).triggerAction({
     matches: 'Start'//when this intent is picked up it triggers the function
