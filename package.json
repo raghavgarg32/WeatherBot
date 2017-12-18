@@ -1,5 +1,5 @@
 {
-  "name": "food_bot",
+  "name": "weater_bot",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -8,16 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raghavgarg32/Food_Bot.git"
+    "url": "git+https://github.com/raghavgarg32/WeatherBot.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/raghavgarg32/Food_Bot/issues"
+    "url": "https://github.com/raghavgarg32/WeatherBot/issues"
   },
-  "homepage": "https://github.com/raghavgarg32/Food_Bot#readme",
+  "homepage": "https://github.com/raghavgarg32/WeatherBot#readme",
   "dependencies": {
-    "@google/maps": "^0.4.5",
     "botbuilder": "^3.12.0",
     "restify": "^6.3.4"
   }
