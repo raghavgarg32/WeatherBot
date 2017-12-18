@@ -10,5 +10,7 @@ exports.displayWeather = function getWeatherData(session, city) {
 //This displays the weather
 function handleWeatherResponse(message, session, city) {
     var weatherResponse = JSON.parse(message); //Parses JSON data
-    session.send("The weather is: " + weatherResponse.weather[0].main); 
+    if (weatherResponse.weather[0]) {
+        session.send("The weather is: " + weatherResponse.weather[0].main);    
+    }
 }
