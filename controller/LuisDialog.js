@@ -18,14 +18,14 @@ exports.startDialog = function (bot) {
     bot.recognizer(recognizer);
   
   
-bot.dialog('Start', [//Coverts currency
+bot.dialog('Start', [//Starts the conversation
     function (session, args, next) {
         session.dialogData.args = args || {};        
-        builder.Prompts.text(session, "Please enter in the city you would like to know the weather for?"); //Asks the user for the amount
-            next(); // Skip if we already have this info.
+        builder.Prompts.text(session, "Please enter in the city you would like to know the weather for?"); //Asks the user for the city
+            next(); 
     },
     function (session, result, next) {
-        session.conversationData["city"] = result.response;//Stores the amount in amount
+        session.conversationData["city"] = result.response;//Stores the city in city
             next();
             // <---- THIS LINE HERE IS WHAT WE NEED 
         
@@ -35,7 +35,7 @@ bot.dialog('Start', [//Coverts currency
         next();
     },
     function (session, result, next) {
-        session.conversationData["city"] = result.response;//Stores the amount in amount
+        session.conversationData["city"] = result.response;//Stores the city in city
         // <---- THIS LINE HERE IS WHAT WE NEED 
         next();
         
@@ -48,20 +48,20 @@ bot.dialog('Start', [//Coverts currency
     matches: 'Start'//when this intent is picked up it triggers the function
 });  
 
-bot.dialog('WelcomeIntent', [//Coverts currency
+bot.dialog('WelcomeIntent', [//Welcomes the user
     function (session, args, next) {
         session.dialogData.args = args || {};        
-        builder.Prompts.text(session, "Would you like to see the weather of your current city?"); //Asks the user for the amount
+        builder.Prompts.text(session, "Would you like to see the weather of your current city?"); //Asks the user if they want to see the current city
     },
     
 ]).triggerAction({
     matches: 'WelcomeIntent'//when this intent is picked up it triggers the function
 });  
 
-bot.dialog('End', [//Coverts currency
+bot.dialog('End', [//Ends the conversatin
     function (session, args, next) {
         session.dialogData.args = args || {};        
-        builder.Prompts.text(session, "Thats it folks!!!"); //Asks the user for the amount
+        builder.Prompts.text(session, "Thats it folks!!!"); //Tells the user the conversation has ended
     },
     
 ]).triggerAction({
