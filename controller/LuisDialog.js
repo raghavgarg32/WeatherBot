@@ -1,4 +1,5 @@
 var weather = require('./Weather');
+var builder = require('botbuilder');
 
 
 // Some sections have been omitted

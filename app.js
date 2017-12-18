@@ -1,7 +1,6 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 var luis = require('./controller/LuisDialog');
-// Some sections have been omitted
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -24,6 +23,5 @@ var bot = new builder.UniversalBot(connector, function (session) {
     session.send('Sorry, I did not understand \'%s\'. Type \'help\' if you need assistance.', session.message.text);
 });
 
-// This line will call the function in your LuisDialog.js file
 luis.startDialog(bot);
  
