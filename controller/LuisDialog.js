@@ -14,7 +14,7 @@ exports.startDialog = function (bot) {
 bot.dialog('Start', [//Starts the conversation
     function (session, args, next) {
         session.dialogData.args = args || {};        
-        builder.Prompts.text(session, "Please enter in the city you would like to know the weather for?"); //Asks the user for the city
+        builder.Prompts.text(session, "Please enter city:"); //Asks the user for the city
             next(); 
     },
     function (session, result, next) {
@@ -27,13 +27,7 @@ bot.dialog('Start', [//Starts the conversation
         weather.displayWeather(session, session.conversationData["city"]); //Shows the user the conversion
         next();
     },
-    function (session, result, next) {
-        session.conversationData["city"] = result.response;//Stores the city in city
-        // <---- THIS LINE HERE IS WHAT WE NEED 
-        next();
-        
-        
-    },   
+ 
 
 ]).triggerAction({
     matches: 'Start'//when this intent is picked up it triggers the function
@@ -42,7 +36,7 @@ bot.dialog('Start', [//Starts the conversation
 bot.dialog('WelcomeIntent', [//Welcomes the user
     function (session, args, next) {
         session.dialogData.args = args || {};        
-        builder.Prompts.text(session, "Would you like to see the weather of your current city?"); //Asks the user if they want to see the current city
+        builder.Prompts.text(session, "Like to see weather of a city?"); //Asks the user if they want to see the current city
     },
     
 ]).triggerAction({
@@ -52,7 +46,7 @@ bot.dialog('WelcomeIntent', [//Welcomes the user
 bot.dialog('End', [//Ends the conversatin
     function (session, args, next) {
         session.dialogData.args = args || {};        
-        builder.Prompts.text(session, "Thats it folks!!!"); //Tells the user the conversation has ended
+        builder.Prompts.text(session, "The end"); //Tells the user the conversation has ended
     },
     
 ]).triggerAction({
