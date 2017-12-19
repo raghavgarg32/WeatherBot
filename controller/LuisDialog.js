@@ -10,11 +10,11 @@ exports.startDialog = function (bot) {
     bot.dialog('WelcomeIntent', [
         function (session, args) {
             // Asks user if they want to find out the weather
-            builder.Prompts.confirm(session, "Hi there! Would you like to know the weather in a city?");
+            builder.Prompts.choice(session, "Hi there! Would you like to know the weather in a city?", "Yes|No", { listStyle: builder.ListStyle.button });
         },
         function (session, result) {
             // If yes then begin dialog for asking about weather
-            if (result.response) {
+            if (result.response.entity === "Yes") {
                 session.beginDialog('Weather');
             } else {
                 session.send("Thanks for using weather bot! :D")
@@ -33,10 +33,11 @@ exports.startDialog = function (bot) {
         function (session, result) {
             // Displays weather at given city
             weather.displayWeather(session, result.response);
-            builder.Prompts.confirm(session, "Would you like to know the weather in another city?");
+            
+            builder.Prompts.choice(session, "Would you like to know the weather in another city?", "Yes|No", { listStyle: builder.ListStyle.button });
         },
         function (session, result) {
-            if (result.response) {
+            if (result.response.entity === "Yes") {
                 session.beginDialog('Weather');
             } else {
                 session.send("Thanks for using weather bot! :D")
