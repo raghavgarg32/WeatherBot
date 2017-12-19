@@ -10,6 +10,7 @@ exports.displayWeather = function getWeatherData(session, city) {
 //This displays the weather
 function handleWeatherResponse(message, session, city) {
     var weatherResponse = JSON.parse(message); //Parses JSON data
+    console.log(weatherResponse.main.temp)
     let imageurl;
 
     if (weatherResponse.weather[0].main.toLowerCase() === "clear"){
@@ -64,9 +65,9 @@ function handleWeatherResponse(message, session, city) {
 	        new builder.HeroCard(session)
 	            .title("Weather For " + city)
 	            
-	            .text(weatherResponse.weather[0].main)
+	            .text(weatherResponse.weather[0].main + " " + (weatherResponse.main.temp - 273.15) + "°C")
 	            .images([builder.CardImage.create(session, imageurl)])
-	            
+
 	      
 	            
 	            
