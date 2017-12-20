@@ -65,7 +65,7 @@ function handleWeatherResponse(message, session, city) {
 	        new builder.HeroCard(session)
 	            .title("Weather For " + city)
 	            
-	            .text(weatherResponse.weather[0].main + " " + (weatherResponse.main.temp - 273.15) + "°C")
+	            .text("Today is " + weatherResponse.weather[0].main + " " + "and the temperature is " + (weatherResponse.main.temp - 273.15 + "°C"))
 	            .images([builder.CardImage.create(session, imageurl)])
 
 	      
