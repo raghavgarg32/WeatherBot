@@ -31,9 +31,7 @@ exports.startDialog = function (bot) {
         },
         function (session, result) {
             // Displays weather at given city
-            weather.displayWeather(session, result.response);
-            
-            builder.Prompts.choice(session, "Would you like to know the weather in another city?", "Yes|No", { listStyle: builder.ListStyle.button });
+            weather.displayWeather(session, result.response);            
         },
         function (session, result) {
             if (result.response.entity === "Yes") {
