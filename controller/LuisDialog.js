@@ -1,4 +1,5 @@
 var weather = require('./Weather');
+var builder = require('botbuilder');
 
 exports.startDialog = function (bot) {
     var recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/f5c7f697-cd55-415b-97bf-cd59690104ed?subscription-key=d815d5827cc84b4b8e9935674293bd02&verbose=true&timezoneOffset=0&q=');
