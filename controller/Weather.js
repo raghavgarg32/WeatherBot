@@ -12,5 +12,6 @@ function handleWeatherResponse(message, session, city) {
     var weatherResponse = JSON.parse(message); //Parses JSON data
     if (weatherResponse.weather[0]) {
         session.send("The weather is: " + weatherResponse.weather[0].main);    
+        builder.Prompts.choice(session, "Would you like to know the weather in another city?", "Yes|No", { listStyle: builder.ListStyle.button });
     }
 }
